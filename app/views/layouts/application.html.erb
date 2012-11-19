@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Zeit und Zeug</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body class='<%=controller.controller_name %>'>
+	<header>
+		<h1><%= image_tag('logo.png', :alt => 'Zeit und Zeug', :title => 'Zeit und Zeug') %></h1>
+		<h2><%= @page_description || "Deine Zeit für tolle Projekte" %></h2>		
+	</header>
+	<div id="container">
+		<aside>
+			<nav id="main_nav">
+				<ul>
+					<li><a href="#">Home</a></li>
+					<li><a href="#">About</a></li>
+					<li><a href="#">Contact</a></li>
+				</ul>
+			</nav>
+		</aside>
+		<div id="main">
+			<%= yield %>
+		</div>
+	</div>
+</body>
+</html>

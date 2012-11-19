@@ -1,0 +1,40 @@
+// Place all the styles related to the Projects controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.projects{
+	table{
+		border-collapse: collapse;
+	}
+	table tr td{
+		padding: 5px;
+		vertical-align: top;
+	}
+	.project_thumbnail{
+		width: 60px;
+		height: auto;
+	}
+	.project_info{
+		width: 60%
+
+		h2{
+			color: #244;
+			font-weight: bold;
+			font-size: larger;
+		}
+		p{
+			margin: 0;
+		}
+	}
+	.project_actions{
+		font-size: x-small;
+		text-align: right;
+		padding-left: 1em;
+	}
+	tr.even{
+		background: #e0f8f8;
+	}
+	tr.odd{
+		background: #f8b0f8;
+	}
+}

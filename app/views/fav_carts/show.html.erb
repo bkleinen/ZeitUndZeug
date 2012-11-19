@@ -1,0 +1,12 @@
+<p id="notice"><%= notice %></p>
+
+<h2>Your Favs</h2>
+
+<ul>
+	<% @fav_cart.favourites.each do |fav| %>
+	<li><%= fav.project.title %></li>
+	<% end %>
+</ul>
+
+<%= link_to 'Edit', edit_fav_cart_path(@fav_cart) %> |
+<%= link_to 'Back', fav_carts_path %>

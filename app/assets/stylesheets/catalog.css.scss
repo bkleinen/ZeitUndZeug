@@ -1,0 +1,28 @@
+// Place all the styles related to the Catalog controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.catalog{
+	.project_entry{
+		overflow: auto;
+		margin-top: 1em;
+		border-bottom: 1px dotted #77d;
+		min-height: 110px;
+		
+		img{
+			width: 100px;
+			height: auto;
+			margin: 0 5px 5px 0;
+			position: absolute;
+		}
+		
+		h2{
+			margin: 0 0 2px 110px;
+			color: #227;
+			
+		}
+		p, div{
+			margin: 10px 0 2px 110px;
+		}
+	}
+}

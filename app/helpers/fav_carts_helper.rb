@@ -1,0 +1,2 @@
+module FavCartsHelper
+end
