@@ -1,6 +1,4 @@
-<% if notice %>
-<p id="notice"><%= notice %></p>
-<% end %>
+
 <% @projects.each do |project| %>
 	<div class="project_entry">
 		<%= image_tag(project.image_url) %>

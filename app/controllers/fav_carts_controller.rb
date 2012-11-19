@@ -1,6 +1,9 @@
 class FavCartsController < ApplicationController
   # GET /fav_carts
   # GET /fav_carts.json
+  
+  before_filter :authenticate_user!
+  
   def index
     @fav_carts = FavCart.all
 
