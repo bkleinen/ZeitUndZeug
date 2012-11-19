@@ -12,7 +12,7 @@
 <% @favourites.each do |favourite| %>
   <tr>
     <td><%= favourite.project_id %></td>
-    <td><%= favourite.fav_card_id %></td>
+    <td><%= favourite.user_id %></td>
     <td><%= link_to 'Show', favourite %></td>
     <td><%= link_to 'Edit', edit_favourite_path(favourite) %></td>
     <td><%= link_to 'Destroy', favourite, method: :delete, data: { confirm: 'Are you sure?' } %></td>

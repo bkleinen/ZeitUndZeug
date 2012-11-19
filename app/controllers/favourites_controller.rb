@@ -1,6 +1,9 @@
 class FavouritesController < ApplicationController
   # GET /favourites
   # GET /favourites.json
+  
+  before_filter :authenticate_user!
+  
   def index
     @favourites = Favourite.all
 
@@ -40,22 +43,27 @@ class FavouritesController < ApplicationController
   # POST /favourites
   # POST /favourites.json
   def create
-    #@favourite = Favourite.new(params[:favourite])
+    #@favourite = Favourite.new(params[:favourite]) 
     
-    @fav_cart = current_fav_cart
     project = Project.find(params[:project_id])
-    @favourite = @fav_cart.favourites.build(project: project)
     
-
-    respond_to do |format|
-      if @favourite.save
-        format.html { redirect_to @favourite.fav_cart, notice: 'Favourite was successfully created.' }
-        format.json { render json: @favourite, status: :created, location: @favourite }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @favourite.errors, status: :unprocessable_entity }
+    if Favourite.find_by_project_id_and_user_id(project, current_user)
+      respond_to do |format|
+        format.html { redirect_to catalog_url, notice: 'You already faved this project.' }
+        format.json { head :no_content }
       end
-    end
+    else
+      @favourite = current_user.favourites.build(project: project) 
+      respond_to do |format|
+        if @favourite.save
+          format.html { redirect_to @favourite, notice: 'Favourite was successfully created.' }
+          format.json { render json: @favourite, status: :created, location: @favourite }
+        else
+          format.html { render action: "new" }
+          format.json { render json: @favourite.errors, status: :unprocessable_entity }
+        end
+      end
+    end  
   end
 
   # PUT /favourites/1
