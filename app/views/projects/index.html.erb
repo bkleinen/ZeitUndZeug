@@ -13,12 +13,14 @@
 	<%= link_to(project) do %>
 		<h2><%= project.title %></h2>
 		<p><%= project.description %></p>
+		<p><%= project.id %></p>
 	<% end %>
     </td>
 	
     <td class='project_actions'>
 		<%= link_to 'Edit', edit_project_path(project) %>
     	<%= link_to 'Delete', project, method: :delete, data: { confirm: 'Are you sure?' } %>
+		<%= Favourite.where(:project_id => project.id).count %>
 	</td>
   </tr>
 <% end %>

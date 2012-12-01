@@ -56,7 +56,7 @@ class FavouritesController < ApplicationController
       @favourite = current_user.favourites.build(project: project) 
       respond_to do |format|
         if @favourite.save
-          format.html { redirect_to @favourite, notice: 'Favourite was successfully created.' }
+          format.html { redirect_to catalog_url, notice: 'Favourite was successfully created.' }
           format.json { render json: @favourite, status: :created, location: @favourite }
         else
           format.html { render action: "new" }

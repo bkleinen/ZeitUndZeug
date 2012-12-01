@@ -5,6 +5,20 @@
 		<h2><%= project.title%></h2>
 		<p><%= project.description%></p>
 		<p><%= project.start_date %></p>
-		<%= button_to 'Add to Favourites', favourites_path(project_id: project) %>	
+		<p>
+		   <span class="heart">&hearts;<!--&#9825;--></span> <%= project.favourites.size %>
+	
+			<!-- SHOULDN'T THIS BE IN THE CATALOG CONTROLLER OR SHOULD WE EVEN 
+			USE ACTIVE RECORD ASSOCIATIONS AND GET RID OF THE FAVOURITES AND HAVE 
+			A USER AS A FAN IN THE PROJECTS TABLE???? -->
+			<% @loving_users = User.find(:all, :order => "username ASC", :joins => :favourites,
+					:conditions => { :favourites => {:project_id => project.id} })%>
+			<% @loving_users.each do |loving_user| %>
+				<%= loving_user.username %>
+			<% end %>
+			<!-- -->
+			
+			<%= button_to 'Add to Favourites', favourites_path(project_id: project) %>	
+		</p>
 	</div>
 <% end %>
